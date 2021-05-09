@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AdidasConfirmed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--    custom theme light theme for the  application-->
+    <style name="Theme.AdidasConfirmed.Default" parent="Theme.AdidasConfirmed">
+        <item name="favouriteIcon">@color/favouriteIcon</item>
+        <item name="black">@color/black</item>
+        <item name="white">@color/white</item>
+        <item name="shareIcon">@color/colorPrimary</item>
+        <item name="reviewText">@color/reviewText</item>
+        <item name="productHeaderText">@color/white</item>
+        <item name="productText">@color/white</item>
+        <item name="descriptionText">@color/black</item>
+        <item name="cardBackground">@color/cardBackground</item>
+        <item name="buttonText">@color/colorPrimary</item>
+        <item name="primaryColor">@color/colorPrimary</item>
+        <item name="primaryColorVariant">@color/colorPrimaryVariant</item>
+        <item name="appBackground">@color/white</item>
+        <item name="windowActionBar">false</item>-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+</resources>

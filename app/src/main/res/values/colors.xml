@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Default Light theme-->
+    <color name="favouriteIcon">#FF6969</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="reviewText">#515C6F</color>
+    <color name="cardBackground">#F6F6F6</color>
+    <color name="ratingColorYellow">#FFEEAD</color>
+    <color name="ratingColorGreen">#96CEB4</color>
+    <color name="ratingColorRed">#FF6969</color>
+    <color name="colorPrimary">#0B3AFF</color>
+    <color name="colorPrimaryVariant">#264EF6</color>
+</resources>

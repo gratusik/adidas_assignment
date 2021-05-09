@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress AndroidUnknownAttribute -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="search"
+            type="com.gratus.adidasconfirmed.ui.viewmodel.fragment.ProductListViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_background"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:elevation="@dimen/elevation_8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/search_image"
+                android:layout_width="@dimen/width_48dp"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_weight="0"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/search_image"
+                android:src="@drawable/ic_search_icon" />
+
+            <EditText
+                android:id="@+id/search_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/search_the_product"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="?attr/descriptionText"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/search_cancel_image"
+                android:layout_width="@dimen/height_40dp"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_8dp"
+                android:layout_weight="0"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/search_image_cancel"
+                android:src="@drawable/ic_close_icon_foreground"
+                android:visibility="visible" />
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
