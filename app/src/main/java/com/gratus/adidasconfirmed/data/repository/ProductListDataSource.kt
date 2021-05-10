@@ -11,6 +11,7 @@ class ProductListDataSource @Inject constructor(
     private var productListService: ProductListService
 ) : ProductListRepository {
 
+    // get the product list from the remote server
     override fun getProductList(): Single<ArrayList<ProductListResponseItem>> {
         return productListService.productListService()
     }

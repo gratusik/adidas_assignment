@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.gratus.adidasconfirmed.R
 import com.gratus.adidasconfirmed.databinding.ActivitySplashBinding
 import com.gratus.adidasconfirmed.ui.view.base.BaseActivity
@@ -30,7 +29,7 @@ class SplashActivity : BaseActivity() {
         activitySplashBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_splash)
         splashViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
         activitySplashBinding.splashViewModel = splashViewModel
         activitySplashBinding.lifecycleOwner = this
         // move to Main page after 1 second delay

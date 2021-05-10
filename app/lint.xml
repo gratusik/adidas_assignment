@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="IconDuplicatesConfig">
+        <ignore path="src/main/res/drawable-xxxhdpi/ic_back_icon.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/ic_next_icon.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/ic_shortcut_favorite.png" />
+        <ignore path="src/main/res/drawable/ic_back_icon.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite_border.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite_border.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite_border.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite_border.png" />
+    </issue>
     <issue id="IconLocation">
         <ignore path="src/main/res/drawable/adidas_logo_light_blue.png" />
         <ignore path="src/main/res/drawable/adidas_logo_white.png" />
+        <ignore path="src/main/res/drawable/ic_back_icon.png" />
         <ignore path="src/main/res/drawable/ic_next_icon.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_favorite_border.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_share.png" />
+        <ignore path="src/main/res/drawable/ic_shortcut_share.png" />
     </issue>
 </lint>

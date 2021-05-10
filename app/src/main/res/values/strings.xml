@@ -7,25 +7,38 @@
     <string name="network_online" translatable="false">Back online!</string>
     <string name="network_offline" translatable="false">No internet connection!</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--   sub header product list page -->
     <string name="feed">Feed</string>
     <string name="search_the_product">Search The Product</string>
     <string name="search_image">Search Image</string>
     <string name="search_image_cancel">Search Image Cancel</string>
-    <string name="search">Search</string>
-    <string name="search_fab">search_fab</string>
+    <string name="search_fab">Search Fab</string>
+
     <!--    product list card text-->
-    <string name="product_image">product_image</string>
-    <string name="default_product_name">%1$s - Unisex Shoe</string>
-    <string name="default_product_price">€ %1$s</string>
-    <string name="view_details_fab">view_details_fab</string>
+    <string name="product_image">Product Image</string>
+    <string name="default_product_name">%1$s - Unisex</string>
     <string name="view_details">VIEW DETAILS</string>
-    <string name="view_details_icon">view_details_icon</string>
+    <string name="view_details_icon">View Details Icon</string>
+
     <!--    exp text-->
     <string name="retry">Retry</string>
-    <string name="product_exp_image">Product exp Image</string>
+    <string name="product_exp_image">Product Exp Image</string>
     <string name="no_data_found" translatable="false">No Product found</string>
     <string name="server_error" translatable="false">Could not connect to server. Please try again later</string>
-    <string name="rating">rating</string>
+
+    <!--    details page text-->
+    <string name="rating">Rating</string>
+    <string name="share_image">share</string>
+    <string name="description">Description</string>
+    <string name="review">Reviews</string>
+
+    <!--share to others text-->
+    <string name="share_title">Adidas</string>
+    <string name="share_info">"Hey! Check out this adidas product:</string>
+
+    <!--    rating text-->
+    <string name="write_the_review">Write the review</string>
+    <string name="rate_this_product">Rate this product</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
 </resources>

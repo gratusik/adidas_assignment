@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    colour reference attributes for the theme the app-->
-    <attr name="shareIcon" format="reference|color" />
-    <attr name="favouriteIcon" format="reference|color" />
+    <!--    colour reference attributes for the theme the app-->
     <attr name="black" format="reference|color" />
     <attr name="white" format="reference|color" />
-    <attr name="buttonText" format="reference|color" />
-    <attr name="productHeaderText" format="reference|color" />
-    <attr name="productText" format="reference|color" />
-    <attr name="descriptionText" format="reference|color" />
-    <attr name="reviewText" format="reference|color" />
+    <attr name="primaryText" format="reference|color" />
+    <attr name="secondaryText" format="reference|color" />
     <attr name="cardBackground" format="reference|color" />
     <attr name="appBackground" format="reference|color" />
+    <attr name="ratingColorRed" format="reference|color" />
+    <attr name="ratingColorYellow" format="reference|color" />
+    <attr name="ratingColorGreen" format="reference|color" />
     <attr name="primaryColor" format="reference|color" />
     <attr name="primaryColorVariant" format="reference|color" />
 </resources>

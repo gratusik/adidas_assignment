@@ -1,11 +1,20 @@
+@file:Suppress("unused")
+
 package com.gratus.adidasconfirmed.di.modules
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.gratus.adidasconfirmed.data.repository.ProductDetailsDataSource
 import com.gratus.adidasconfirmed.data.repository.ProductListDataSource
+import com.gratus.adidasconfirmed.data.repository.ReviewDataSource
+import com.gratus.adidasconfirmed.data.service.local.db.AdidasDataBase
+import com.gratus.adidasconfirmed.data.service.remote.ProductDetailsService
 import com.gratus.adidasconfirmed.data.service.remote.ProductListService
+import com.gratus.adidasconfirmed.data.service.remote.ReviewService
+import com.gratus.adidasconfirmed.domain.repository.ProductDetailsRepository
 import com.gratus.adidasconfirmed.domain.repository.ProductListRepository
+import com.gratus.adidasconfirmed.domain.repository.ReviewRepository
 import com.gratus.adidasconfirmed.util.constants.ServiceConstants
 import com.gratus.adidasconfirmed.util.interceptor.AppInterceptor
 import dagger.Module
@@ -45,13 +54,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun getRequestHeader(): OkHttpClient {
-        val httpClient = OkHttpClient.Builder()
-        httpClient.addInterceptor(AppInterceptor())
+    fun provideOkHttpClient(interceptor: AppInterceptor?): OkHttpClient { // The Interceptor is then added to the client
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor!!)
             .connectTimeout(100, TimeUnit.SECONDS)
             .writeTimeout(100, TimeUnit.SECONDS)
             .readTimeout(300, TimeUnit.SECONDS)
-        return httpClient.build()
+            .build()
     }
 
     // service provider
@@ -61,12 +70,41 @@ class NetworkModule {
         return retrofit.create(ProductListService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideProductDetailsService(retrofit: Retrofit): ProductDetailsService {
+        return retrofit.create(ProductDetailsService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideReviewService(retrofit: Retrofit): ReviewService {
+        return retrofit.create(ReviewService::class.java)
+    }
+
     // repo provider
+    @Singleton
+    @Provides
+    fun provideProductDetailsRepository(
+        adidasDataBase: AdidasDataBase,
+        productDetailsService: ProductDetailsService
+    ): ProductDetailsRepository {
+        return ProductDetailsDataSource(adidasDataBase, productDetailsService)
+    }
+
     @Singleton
     @Provides
     fun provideProductListRepository(
         productListService: ProductListService
     ): ProductListRepository {
         return ProductListDataSource(productListService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideReviewDataSource(
+        reviewService: ReviewService
+    ): ReviewRepository {
+        return ReviewDataSource(reviewService)
     }
 }

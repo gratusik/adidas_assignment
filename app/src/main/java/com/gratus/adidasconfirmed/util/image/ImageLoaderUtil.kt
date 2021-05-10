@@ -11,6 +11,7 @@ import com.gratus.adidasconfirmed.databinding.ItemProductListBinding
 
 class ImageLoaderUtil {
     // using glide to load image from url and store as cache
+    // Palette algorithm to pick color from image to set the card background color
     fun loadGlideIntoImageView(link: String, mBinding: ItemProductListBinding) {
         Glide.with(mBinding.productImage.context)
             .asBitmap()

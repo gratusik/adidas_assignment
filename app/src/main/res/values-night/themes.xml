@@ -10,24 +10,111 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!--    custom theme light theme for the  application-->
     <style name="Theme.AdidasConfirmed.Default" parent="Theme.AdidasConfirmed">
-        <item name="favouriteIcon">@color/favouriteIcon</item>
         <item name="black">@color/black</item>
         <item name="white">@color/white</item>
-        <item name="shareIcon">@color/colorPrimary</item>
-        <item name="reviewText">@color/reviewText</item>
-        <item name="productHeaderText">@color/white</item>
-        <item name="productText">@color/white</item>
-        <item name="descriptionText">@color/black</item>
+        <item name="primaryText">@color/black</item>
+        <item name="secondaryText">@color/grey</item>
         <item name="cardBackground">@color/cardBackground</item>
-        <item name="buttonText">@color/colorPrimary</item>
         <item name="primaryColor">@color/colorPrimary</item>
         <item name="primaryColorVariant">@color/colorPrimaryVariant</item>
+        <item name="ratingColorRed">@color/ratingColorRed</item>
+        <item name="ratingColorYellow">@color/ratingColorYellow</item>
+        <item name="ratingColorGreen">@color/ratingColorGreen</item>
         <item name="appBackground">@color/white</item>
         <item name="windowActionBar">false</item>-->
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/primaryColorVariant</item>
     </style>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="android:layout_margin">@dimen/margin_8dp</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+        <item name="colorControlNormal">?attr/secondaryText</item>
+        <item name="colorControlActivated">?attr/ratingColorRed</item>
+    </style>
+
+    <style name="ToggleButton" parent="Theme.AppCompat">
+        <item name="android:checked">false</item>
+        <item name="android:elevation">@dimen/elevation_8dp</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="RatingText" parent="Theme.AppCompat">
+        <item name="android:textColor">?attr/white</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HeaderTextBlack" parent="Theme.AppCompat">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?attr/primaryText</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/text_size_20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeaderTextBlack" parent="Theme.AppCompat">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?attr/primaryText</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeaderTextGrey" parent="Theme.AppCompat">
+        <item name="android:textColor">?attr/secondaryText</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+
+    <style name="DescriptionTextBlack" parent="Theme.AppCompat">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?attr/primaryText</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DescriptionTextGrey" parent="Theme.AppCompat">
+        <item name="android:textColor">?attr/secondaryText</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+
+    <style name="SubHeaderTextPrimary" parent="Theme.AppCompat">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?attr/primaryColor</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeaderTextWhite" parent="Theme.AppCompat">
+        <item name="android:background">?attr/primaryText</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?attr/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SplashTextWhite" parent="Theme.AppCompat">
+        <item name="android:textColor">?attr/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="EditText" parent="Theme.AppCompat">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

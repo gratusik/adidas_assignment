@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.gratus.adidasconfirmed.data.service.local.pref.AppPreferencesHelper
 import com.gratus.adidasconfirmed.databinding.SubHeaderProductListBinding
 import com.gratus.adidasconfirmed.util.animator.CustomAnimator
 import com.gratus.adidasconfirmed.util.interceptor.AppInterceptor
@@ -13,8 +12,6 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 abstract class BaseFragment : DaggerFragment() {
-    @Inject
-    lateinit var prefs: AppPreferencesHelper
 
     @Inject
     lateinit var mInterceptor: AppInterceptor
@@ -24,11 +21,6 @@ abstract class BaseFragment : DaggerFragment() {
 
     fun isNetworkConnected(): Boolean {
         return networkOnlineCheck.isNetworkOnline
-    }
-
-    @JvmName("getPrefs1")
-    fun getPrefs(): AppPreferencesHelper {
-        return prefs
     }
 
     // open and hide of keyboard on visibility of search edit text

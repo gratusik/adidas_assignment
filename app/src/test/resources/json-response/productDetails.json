@@ -1,0 +1,16 @@
+{
+  "currency": "",
+  "price": 0,
+  "id": "HI333",
+  "name": "product",
+  "description": "description",
+  "imgUrl": "https://assets.adidas.com/images/w_320,h_320,f_auto,q_auto:sensitive,fl_lossy/c7099422ccc14e44b406abec00ba6c96_9366/NMD_R1_V2_Shoes_Black_FY6862_01_standard.jpg",
+  "reviews": [
+    {
+      "productId": "HI333",
+      "locale": "en-US",
+      "rating": 3,
+      "text": "Amazing!"
+    }
+  ]
+}

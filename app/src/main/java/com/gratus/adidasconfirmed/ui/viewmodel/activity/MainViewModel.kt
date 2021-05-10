@@ -1,6 +1,6 @@
 package com.gratus.adidasconfirmed.ui.viewmodel.activity
 
-import com.gratus.adidasconfirmed.ui.viewmodel.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor() : BaseViewModel()
+class MainViewModel @Inject constructor() : ViewModel()

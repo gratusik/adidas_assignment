@@ -1,15 +1,15 @@
 package com.gratus.adidasconfirmed.ui.viewmodel.fragment
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.gratus.adidasconfirmed.domain.model.remoteResponse.ProductListResponseItem
 import com.gratus.adidasconfirmed.interactors.GetProductListUseCase
-import com.gratus.adidasconfirmed.ui.viewmodel.base.BaseViewModel
 import com.gratus.adidasconfirmed.ui.viewmodel.state.ProductListState
 import javax.inject.Inject
 
 class ProductListViewModel @Inject constructor(
     private val getProductListUseCase: GetProductListUseCase
-) : BaseViewModel() {
+) : ViewModel() {
     val productListState = MutableLiveData<ProductListState>()
     private var productList: ArrayList<ProductListResponseItem> = ArrayList()
 

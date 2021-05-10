@@ -6,7 +6,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 
 class CustomAnimator {
     // slide animation for search
-    open fun slideAnimator(layout: CoordinatorLayout, start: Int, end: Int): ValueAnimator {
+    fun slideAnimator(layout: CoordinatorLayout, start: Int, end: Int): ValueAnimator {
         val animator = ValueAnimator.ofInt(start, end)
         animator.duration = 500
         animator.interpolator = DecelerateInterpolator()

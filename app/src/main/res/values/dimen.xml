@@ -5,6 +5,7 @@
     <dimen name="width_20dp">20dp</dimen>
     <dimen name="width_48dp">48dp</dimen>
     <dimen name="width_50dp">50dp</dimen>
+    <dimen name="width_100dp">100dp</dimen>
     <dimen name="width_150dp">150dp</dimen>
     <dimen name="width_260dp">260dp</dimen>
     <!--    height-->
@@ -15,14 +16,15 @@
     <dimen name="height_40dp">40dp</dimen>
     <dimen name="height_48dp">48dp</dimen>
     <dimen name="height_50dp">50dp</dimen>
+    <dimen name="height_60dp">60dp</dimen>
     <dimen name="height_80dp">80dp</dimen>
-    <dimen name="height_100dp">100dp</dimen>
     <dimen name="height_150dp">150dp</dimen>
     <dimen name="height_200dp">200dp</dimen>
+    <dimen name="height_348dp">348dp</dimen>
     <!--    padding-->
     <dimen name="padding_8dp">8dp</dimen>
     <dimen name="padding_16dp">16dp</dimen>
-    <!--    margin-->\
+    <!--    margin-->
     <dimen name="margin_4dp">4dp</dimen>
     <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
@@ -34,6 +36,5 @@
     <dimen name="text_size_20sp">20sp</dimen>
     <dimen name="text_size_32sp">32sp</dimen>
     <!--    elevation-->
-    <dimen name="elevation_0dp">0dp</dimen>
     <dimen name="elevation_8dp">8dp</dimen>
 </resources>

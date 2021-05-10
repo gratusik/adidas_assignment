@@ -28,7 +28,7 @@
             android:paddingTop="@dimen/padding_8dp"
             android:paddingEnd="@dimen/padding_16dp"
             android:paddingBottom="@dimen/padding_8dp"
-            android:textColor="@color/reviewText"
+            android:textColor="?attr/secondaryText"
             android:textSize="@dimen/text_size_14sp" />
 
         <TextView

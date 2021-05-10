@@ -7,7 +7,7 @@ import com.gratus.adidasconfirmed.di.modules.InternetModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
-class BaseApplication : DaggerApplication() {
+open class BaseApplication : DaggerApplication() {
     private lateinit var connectivityManager: ConnectivityManager
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         connectivityManager =

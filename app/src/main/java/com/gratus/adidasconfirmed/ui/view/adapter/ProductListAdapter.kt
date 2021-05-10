@@ -49,7 +49,11 @@ class ProductListAdapter @Inject constructor(private var productListResponseItem
         override fun onBind(position: Int) {
             if (mListener != null) {
                 productListItemViewModel =
-                    ProductListItemViewModel(productListResponseItem[position], mListener)
+                    ProductListItemViewModel(
+                        productListResponseItem[position],
+                        mListener,
+                        mBinding.viewDetailsFab
+                    )
             }
             mBinding.productListItemViewModel = productListItemViewModel
             ImageLoaderUtil().loadGlideIntoImageView(

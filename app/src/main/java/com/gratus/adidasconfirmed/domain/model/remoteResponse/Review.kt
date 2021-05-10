@@ -9,11 +9,17 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Review(
     @SerializedName("locale")
-    var locale: String,
+    var locale: String?,
     @SerializedName("productId")
-    var productId: String,
+    var productId: String?,
     @SerializedName("rating")
-    var rating: Int,
+    var rating: Int?,
     @SerializedName("text")
-    var text: String
-) : Parcelable
+    var text: String?
+) : Parcelable {
+    companion object {
+        fun empty(): Review {
+            return Review(null, null, null, null)
+        }
+    }
+}

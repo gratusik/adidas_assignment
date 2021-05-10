@@ -3,7 +3,6 @@ package com.gratus.adidasconfirmed.ui.view.activity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
 import com.gratus.adidasconfirmed.R
 import com.gratus.adidasconfirmed.databinding.ActivityMainBinding
@@ -26,7 +25,7 @@ class MainActivity : BaseActivity() {
         activityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         activityMainBinding.mainViewModel = mainViewModel
         activityMainBinding.lifecycleOwner = this
         // network check using receiver

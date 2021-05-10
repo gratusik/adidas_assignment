@@ -26,7 +26,6 @@
                 android:layout_width="@dimen/width_48dp"
                 android:layout_height="@dimen/height_50dp"
                 android:layout_marginStart="@dimen/margin_8dp"
-                android:layout_weight="0"
                 android:background="?selectableItemBackgroundBorderless"
                 android:contentDescription="@string/search_image"
                 android:src="@drawable/ic_search_icon" />
@@ -35,16 +34,16 @@
                 android:id="@+id/search_edit_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="@string/search_the_product"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:maxLines="1"
+                android:layout_weight="1"
                 android:singleLine="true"
-                android:textColor="?attr/descriptionText"
-                android:textSize="@dimen/text_size_16sp"
-                android:textStyle="bold" />
+                android:textColor="?attr/primaryText"
+                android:textColorHint="?attr/secondaryText"
+                android:theme="@style/EditText" />
 
             <ImageButton
                 android:id="@+id/search_cancel_image"
@@ -52,7 +51,6 @@
                 android:layout_height="@dimen/height_50dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/margin_8dp"
-                android:layout_weight="0"
                 android:background="?selectableItemBackgroundBorderless"
                 android:contentDescription="@string/search_image_cancel"
                 android:src="@drawable/ic_close_icon_foreground"

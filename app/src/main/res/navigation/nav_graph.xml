@@ -2,21 +2,37 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
     app:startDestination="@id/productListFragment">
 
     <fragment
         android:id="@+id/productListFragment"
         android:name="com.gratus.adidasconfirmed.ui.view.fragment.ProductListFragment"
         android:label="fragment_product_list"
-        tools:layout="@layout/fragment_product_list" >
+        tools:layout="@layout/fragment_product_list">
         <action
             android:id="@+id/action_productListFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.gratus.adidasconfirmed.ui.view.fragment.ProductDetailsFragment"
         android:label="fragment_product_details"
-        tools:layout="@layout/fragment_product_details" />
+        tools:layout="@layout/fragment_product_details">
+        <action
+            android:id="@+id/action_productDetailsFragment_to_reviewBottomModelFragment"
+            app:destination="@id/reviewBottomModelFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right" />
+    </fragment>
+    <dialog
+        android:id="@+id/reviewBottomModelFragment"
+        android:name="com.gratus.adidasconfirmed.ui.view.fragment.ReviewBottomModelFragment"
+        android:label="fragment_review_bottom_model"
+        tools:layout="@layout/fragment_review_bottom_model" />
 </navigation>

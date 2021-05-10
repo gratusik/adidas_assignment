@@ -14,12 +14,13 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 // Interceptor to change the Base URL dynamically
-// to accomodate xkcd url and third part search url 
+// to accomodate product list and details url and add review url
 @Singleton
 class AppInterceptor @Inject constructor() : Interceptor {
     private var sInterceptor: AppInterceptor? = null
     private var mScheme: String? = null
     private var mHost: String? = null
+    private var mPort: Int? = null
 
     @Inject
     fun get(): AppInterceptor? {
@@ -33,6 +34,7 @@ class AppInterceptor @Inject constructor() : Interceptor {
         val httpUrl = url!!.toHttpUrlOrNull()
         mScheme = httpUrl!!.scheme
         mHost = httpUrl.host
+        mPort = httpUrl.port
     }
 
     /**
@@ -41,10 +43,11 @@ class AppInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var original = chain.request()
         // If new Base URL is properly formatted than replace with old one
-        if (mScheme != null && mHost != null) {
+        if (mScheme != null && mHost != null && mPort != null) {
             val newUrl: HttpUrl = original.url.newBuilder()
                 .scheme(mScheme!!)
                 .host(mHost!!)
+                .port(mPort!!)
                 .build()
             original = original.newBuilder()
                 .url(newUrl)

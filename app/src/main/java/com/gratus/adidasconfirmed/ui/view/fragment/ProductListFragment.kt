@@ -6,10 +6,11 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gratus.adidasconfirmed.R
@@ -19,18 +20,13 @@ import com.gratus.adidasconfirmed.ui.view.base.BaseFragment
 import com.gratus.adidasconfirmed.ui.viewmodel.fragment.ProductListViewModel
 import com.gratus.adidasconfirmed.ui.viewmodel.state.ProductListState
 import com.gratus.adidasconfirmed.util.Interfaces.ProductListListener
+import com.gratus.adidasconfirmed.util.constants.AppConstants.Companion.PRODUCT_ID
 import com.gratus.adidasconfirmed.util.constants.ServiceConstants
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ProductListFragment : BaseFragment(), ProductListListener {
 
     private lateinit var fragmentProductListBinding: FragmentProductListBinding
-
-    private lateinit var mRootView: View
 
     private lateinit var productListViewModel: ProductListViewModel
 
@@ -38,15 +34,12 @@ class ProductListFragment : BaseFragment(), ProductListListener {
     lateinit var productListAdapter: ProductListAdapter
 
     @Inject
-    lateinit var mLayoutManager: LinearLayoutManager
-
-    @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         productListViewModel =
-            ViewModelProviders.of(this, viewModelFactory)
+            ViewModelProvider(this, viewModelFactory)
                 .get(ProductListViewModel::class.java)
     }
 
@@ -58,7 +51,22 @@ class ProductListFragment : BaseFragment(), ProductListListener {
         // Inflate the layout for this fragment
         fragmentProductListBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
-        mRootView = fragmentProductListBinding.root
+        return fragmentProductListBinding.root
+    }
+
+    // init to get product list from remote server 
+    private fun init() {
+        if (isNetworkConnected()) {
+            fragmentProductListBinding.progressBar.visibility = View.VISIBLE
+            mInterceptor.setInterceptor(ServiceConstants.BASE_URL)
+            productListViewModel.getProductList()
+            setUpProductListPage()
+        } else {
+            exceptionLayoutVisibility(getString(R.string.network_offline))
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // search visibility - visible on click search fab
         fragmentProductListBinding.subHeader.searchFab.setOnClickListener {
             openHideKeyboard(
@@ -73,7 +81,6 @@ class ProductListFragment : BaseFragment(), ProductListListener {
                 false
             )
         }
-
         fragmentProductListBinding.subHeader.viewSearch.searchEditText.addTextChangedListener(object :
                 TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -89,24 +96,14 @@ class ProductListFragment : BaseFragment(), ProductListListener {
         fragmentProductListBinding.expCard.retry.setOnClickListener {
             init()
         }
+        if (productListViewModel.productListState.value == null) {
+            init()
+        } else {
+            setUpProductListPage()
+        }
+        setProductListAdapter()
         fragmentProductListBinding.productListViewModel = productListViewModel
         fragmentProductListBinding.lifecycleOwner = this
-        init()
-        setProductListAdapter()
-        return mRootView
-    }
-
-    // init to get product list from remote server 
-    private fun init() {
-        if (isNetworkConnected()) {
-            exceptionLayoutGone()
-            fragmentProductListBinding.progressBar.visibility = View.VISIBLE
-            mInterceptor.setInterceptor(ServiceConstants.BASE_URL)
-            productListViewModel.getProductList()
-            setUpProductListPage()
-        } else {
-            exceptionLayoutVisibility(getString(R.string.network_offline))
-        }
     }
 
     // observe for the product list data from remote server using live data
@@ -121,9 +118,6 @@ class ProductListFragment : BaseFragment(), ProductListListener {
                         }
                     }
                     is ProductListState.ProductListSuccess -> {
-                        val job = GlobalScope.launch(IO) {
-                            delay(1000)
-                        }
                         if (it.list.size > 0) {
                             exceptionLayoutGone()
                             productListAdapter.updateProductListAdapter(it.list)
@@ -139,17 +133,11 @@ class ProductListFragment : BaseFragment(), ProductListListener {
         )
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(): ProductListFragment {
-            return ProductListFragment()
-        }
-    }
-
     // setting up the product list adapter
     private fun setProductListAdapter() {
-        mLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        fragmentProductListBinding.productListRv.layoutManager = mLayoutManager
+        val linearLayoutManager = LinearLayoutManager(activity)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        fragmentProductListBinding.productListRv.layoutManager = linearLayoutManager
         fragmentProductListBinding.productListRv.itemAnimator = DefaultItemAnimator()
         fragmentProductListBinding.productListRv.adapter = productListAdapter
         productListAdapter.setListener(ProductListFragment())
@@ -158,9 +146,9 @@ class ProductListFragment : BaseFragment(), ProductListListener {
     // Visibility status of exception on network connection
     private fun exceptionLayoutVisibility(errorString: String) {
         fragmentProductListBinding.progressBar.visibility = View.GONE
+        fragmentProductListBinding.productListRv.visibility = View.GONE
         fragmentProductListBinding.expCard.rootExpLayout.visibility = View.VISIBLE
         fragmentProductListBinding.expCard.expText.text = errorString
-        fragmentProductListBinding.productListRv.visibility = View.GONE
         if (fragmentProductListBinding.subHeader.viewSearch.searchLayout.isVisible) {
             fragmentProductListBinding.subHeader.subHeaderLayout.visibility = View.VISIBLE
             fragmentProductListBinding.expCard.retry.visibility = View.GONE
@@ -178,7 +166,14 @@ class ProductListFragment : BaseFragment(), ProductListListener {
     }
 
     // on item click in recycler view an get product id to move the product details fragment 
-    override fun onItemClick(productId: String) {
-        TODO("Not yet implemented")
+    override fun onItemClick(view: View, productId: String) {
+        val bundle = bundleOf(
+            PRODUCT_ID to productId,
+        )
+        val navController = Navigation.findNavController(view)
+        navController.navigate(
+            R.id.action_productListFragment_to_productDetailsFragment,
+            bundle
+        )
     }
 }

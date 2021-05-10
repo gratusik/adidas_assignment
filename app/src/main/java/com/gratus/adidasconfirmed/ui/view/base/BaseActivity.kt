@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -13,14 +14,11 @@ import com.gratus.adidasconfirmed.util.constants.AppConstants
 import com.gratus.adidasconfirmed.util.interceptor.AppInterceptor
 import com.gratus.adidasconfirmed.util.networkManager.NetworkOnlineCheck
 import com.gratus.adidasconfirmed.util.networkManager.NetworkOnlineReceiver
-import com.gratus.adidasconfirmed.data.service.local.pref.AppPreferencesHelper
 import com.gratus.adidasconfirmed.util.snackBar.CustomSnackBar
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
-    @Inject
-    lateinit var prefs: AppPreferencesHelper
 
     @Inject
     lateinit var mInterceptor: AppInterceptor
@@ -29,9 +27,6 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     lateinit var networkOnlineCheck: NetworkOnlineCheck
     private var snackBar: Snackbar? = null
     private var initial: Boolean = false
-    fun isNetworkConnected(): Boolean {
-        return networkOnlineCheck.isNetworkOnline
-    }
 
     // Broadcast receiver to get network state
     private fun networkReceiver() {
@@ -78,7 +73,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 snackBar!!,
                 snackBar!!.view,
                 true,
-                resources.getColor(R.color.black)
+                ContextCompat.getColor(applicationContext, R.color.black)
             )
         } else {
             snackBar = Snackbar.make(parent!!, R.string.network_offline, Snackbar.LENGTH_INDEFINITE)
@@ -87,13 +82,8 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 snackBar!!,
                 snackBar!!.view,
                 false,
-                resources.getColor(R.color.black)
+                ContextCompat.getColor(applicationContext, R.color.black)
             )
         }
-    }
-
-    @JvmName("getPrefs1")
-    fun getPrefs(): AppPreferencesHelper {
-        return prefs
     }
 }

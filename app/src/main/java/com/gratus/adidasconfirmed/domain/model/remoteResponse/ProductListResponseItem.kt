@@ -21,7 +21,7 @@ data class ProductListResponseItem(
     @SerializedName("price")
     var price: Int,
     @SerializedName("reviews")
-    var reviews: List<Review>,
+    var reviews: ArrayList<Review>,
     var averageRating: Float?
 ) : Parcelable {
     // concat currency and price
@@ -39,7 +39,7 @@ data class ProductListResponseItem(
         var averageRating = 0.0f
         if (reviews.isNotEmpty()) {
             for (i in reviews.indices) {
-                sum += reviews[i].rating
+                sum += reviews[i].rating!!
             }
             averageRating = (sum / reviews.size).toFloat()
         }

@@ -66,6 +66,8 @@ class ProductListFragmentTest : TestCase() {
                         clickItemWithId(R.id.view_details_fab)
                     )
             )
+        onView(withId(R.id.product_detail_layout))
+            .check(matches(ViewMatchers.isDisplayed()))
     }
 
     private fun clickItemWithId(id: Int): ViewAction {
