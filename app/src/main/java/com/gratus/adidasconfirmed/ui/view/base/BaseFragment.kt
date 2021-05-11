@@ -37,6 +37,7 @@ abstract class BaseFragment : DaggerFragment() {
                 parentWidth
             )
             animator.start()
+            subHeader.viewSearch.searchEditText.text.clear()
             subHeader.viewSearch.searchEditText.requestFocus()
             (activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)?.toggleSoftInput(
                 InputMethodManager.SHOW_FORCED,

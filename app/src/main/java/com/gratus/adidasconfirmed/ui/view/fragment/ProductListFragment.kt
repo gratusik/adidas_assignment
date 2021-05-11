@@ -1,11 +1,14 @@
 package com.gratus.adidasconfirmed.ui.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.InputMethodManager.SHOW_FORCED
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -167,6 +170,11 @@ class ProductListFragment : BaseFragment(), ProductListListener {
 
     // on item click in recycler view an get product id to move the product details fragment 
     override fun onItemClick(view: View, productId: String) {
+        if (view.requestFocus()) {
+            val imm =
+                view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm?.toggleSoftInput(SHOW_FORCED, 0)
+        }
         val bundle = bundleOf(
             PRODUCT_ID to productId,
         )

@@ -1,9 +1,11 @@
 package com.gratus.adidasconfirmed.ui.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.setFragmentResultListener
@@ -62,6 +64,10 @@ open class ProductDetailsFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)?.hideSoftInputFromWindow(
+            view.windowToken,
+            0
+        )
         init(getProductId())
         setReviewListAdapter()
         // navigate back to product  list page
