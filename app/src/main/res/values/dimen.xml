@@ -8,7 +8,6 @@
     <dimen name="width_100dp">100dp</dimen>
     <dimen name="width_150dp">150dp</dimen>
     <dimen name="width_170dp">170dp</dimen>
-    <dimen name="width_200dp">200dp</dimen>
     <dimen name="width_260dp">260dp</dimen>
     <!--    height-->
     <dimen name="height_0dp">0dp</dimen>
