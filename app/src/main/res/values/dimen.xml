@@ -7,6 +7,8 @@
     <dimen name="width_50dp">50dp</dimen>
     <dimen name="width_100dp">100dp</dimen>
     <dimen name="width_150dp">150dp</dimen>
+    <dimen name="width_170dp">170dp</dimen>
+    <dimen name="width_200dp">200dp</dimen>
     <dimen name="width_260dp">260dp</dimen>
     <!--    height-->
     <dimen name="height_0dp">0dp</dimen>
@@ -19,8 +21,11 @@
     <dimen name="height_60dp">60dp</dimen>
     <dimen name="height_80dp">80dp</dimen>
     <dimen name="height_150dp">150dp</dimen>
+    <dimen name="height_170dp">170dp</dimen>
     <dimen name="height_200dp">200dp</dimen>
+    <dimen name="height_260dp">260dp</dimen>
     <dimen name="height_348dp">348dp</dimen>
+    <dimen name="height_500dp">500dp</dimen>
     <!--    padding-->
     <dimen name="padding_8dp">8dp</dimen>
     <dimen name="padding_16dp">16dp</dimen>
@@ -29,6 +34,8 @@
     <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_230dp">230dp</dimen>
     <!--    text size-->
     <dimen name="text_size_12sp">12sp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>

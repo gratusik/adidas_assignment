@@ -29,28 +29,50 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_500dp"
+                android:layout_height="@dimen/height_260dp"
                 app:contentScrim="?attr/appBackground"
                 app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlwaysCollapsed"
                 app:layout_scrollInterpolator="@android:anim/decelerate_interpolator">
                 <!--            main view to be displayed when the toolbar is expanded-->
-                <ImageView
-                    android:id="@+id/product_details_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_348dp"
-                    android:contentDescription="@string/product_image"
-                    android:scaleType="fitXY"
-                    app:layout_collapseMode="parallax"
-                    app:setImage="@{productDetailsViewModel.productDetails.imgUrl}" />
-
-                <include
-                    android:id="@+id/product_details_item"
-                    layout="@layout/item_product_details"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    app:layout_collapseMode="parallax"
-                    bind:product="@{productDetailsViewModel}" />
+                    android:background="?attr/appBackground"
+                    android:orientation="horizontal"
+                    app:layout_collapseMode="parallax">
+
+                    <ImageView
+                        android:id="@+id/product_details_image"
+                        android:layout_width="@dimen/width_170dp"
+                        android:layout_height="@dimen/height_170dp"
+                        android:layout_marginTop="@dimen/margin_60dp"
+                        android:contentDescription="@string/product_image"
+                        android:scaleType="fitXY"
+                        app:layout_collapseMode="parallax"
+                        app:setImage="@{productDetailsViewModel.productDetails.imgUrl}" />
+
+                    <include
+                        android:id="@+id/product_details_item"
+                        layout="@layout/item_product_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_170dp"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="@dimen/margin_60dp"
+                        app:layout_collapseMode="parallax"
+                        bind:product="@{productDetailsViewModel}" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/review_string_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginTop="@dimen/margin_230dp"
+                    android:background="?attr/appBackground"
+                    android:gravity="bottom"
+                    android:paddingStart="@dimen/padding_8dp"
+                    android:paddingEnd="@dimen/padding_8dp"
+                    android:text="@string/review"
+                    android:theme="@style/SubHeaderTextGrey" />
                 <!--            toolbar that will be displayed when the CollapsingToolbar fully collapses-->
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
